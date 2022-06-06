@@ -2,12 +2,11 @@
   "name": "jlc-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/mico-com.umd.js",
-  "module": "lib/mico-com.es.js",
   "keyword": "vue3 vite",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:lib": "vue-tsc --noEmit && vite build --config ./build/lib.config.ts",
     "build:package": "vue-tsc --noEmit && vite build"
   },
   "dependencies": {
@@ -21,6 +20,8 @@
     "sass": "^1.45.1",
     "typescript": "^4.4.4",
     "vite": "^2.8.6",
+    "vite-plugin-dts": "^0.9.6",
+    "vite-plugin-md": "^0.11.4",
     "vue-tsc": "^0.29.8"
   },
   "repository": {

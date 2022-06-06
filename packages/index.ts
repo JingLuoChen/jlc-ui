@@ -1,9 +1,9 @@
 import { App } from 'vue'
 import MicoButton from './button'
-import MicoCustomBar from './custom-bar'
+import MicoLoading from './loading'
 
 // 所有组件列表
-const components = [ MicoButton, MicoCustomBar ]
+const components = [ MicoButton, MicoLoading ]
 
 // 定义 install 方法， App 作为参数
 const install = (app: App): void => {
@@ -14,5 +14,5 @@ const install = (app: App): void => {
 export default {
     install,
     MicoButton,
-    MicoCustomBar
+    MicoLoading
 }
