@@ -1,20 +1,24 @@
 <template>
-    <div class="mico-button">
+    <div class="mico-button" @click="$emit('click', $event)">
         <slot></slot>
     </div>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue"
-export default defineComponent({
-    name: 'mico-button'
-})
-
+<script lang="ts" setup>
+defineEmits(['click'])
 </script>
-<style scoped>
+<style scoped lang="less">
 .mico-button {
-    display: inline-block;
-    padding: 3px 6px;
-    background: #000;
+    appearance: none;
+    padding: 5px 10px;
+    background: lightskyblue;
+    border: none;
+    border-radius: 4px;
     color: #fff;
+    &:active {
+        background: rgb(92, 185, 243);
+    }
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
 }
 </style>
