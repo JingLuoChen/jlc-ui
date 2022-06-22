@@ -1,0 +1,248 @@
+@h-default: 44px;
+@h-small: 32px;
+@h-mini: 24px;
+@h-large: 48px;
+@white: #fff;
+@default-color: #333;
+@primary-color: #07c160;
+@info-color: #1989fa;
+@success-color: #67c23a;
+@warning-color: #ff976a;
+@danger-color: #ee0a24;
+@grey: grey;
+@default-border-color: #ebedf0;
+@radius: 2px;
+@green: #18a058;
+
+.jlc-button {
+  box-sizing: border-box;
+  height: @h-default;
+  font-size: 14px;
+  background-color: #fff;
+  padding: 0 15px;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: @radius;
+  box-shadow: 0 1px 0 fade-out(black, 0.95);
+  transition: all 250ms;
+  color: @default-color;
+  border: 1px solid @default-border-color;
+  user-select: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &.is-circle.jlc-button--normal {
+    border-radius: 100%;
+    height: @h-default;
+    width: @h-default;
+  }
+
+  &.is-circle.jlc-button--small {
+    border-radius: 100%;
+    height: @h-small;
+    width: @h-small;
+  }
+  &.is-circle.jlc-button--large {
+    border-radius: 100%;
+    height: @h-large;
+    width: @h-large;
+  }
+  &.jlc-button--round.jlc-button--normal {
+    border-radius: calc(@h-default / 2);
+  }
+  &.jlc-button--round.jlc-button--large {
+    border-radius: calc(@h-large / 2);
+  }
+  &.jlc-button--round.jlc-button--small {
+    border-radius: calc(@h-small / 2);
+  }
+
+  .jlc-loading {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 8px;
+    border-color: @white @white @white transparent;
+    border-width: 2px;
+    animation: jlc-spin 1s infinite linear;
+  }
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.jlc-button--default {
+  &:hover {
+    color: @green;
+    border-color: @green;
+
+    .jlc-loading {
+      border-color: @green @green @green transparent;
+    }
+  }
+  &:active {
+    color: darken(@green, 20%);
+    border-color: darken(@green, 20%);
+  }
+
+  &.jlc-loading {
+    border-color: @default-color @default-color @default-color transparent;
+  }
+}
+
+.jlc-button--primary {
+  background-color: @primary-color;
+  border-color: @primary-color;
+  color: @white;
+
+  &:hover {
+    background: lighten(@primary-color, 20%);
+    border-color: lighten(@primary-color, 20%);
+  }
+  &:active {
+    background-color: darken(@primary-color, 20%);
+    border-color: darken(@primary-color, 20%);
+  }
+
+  &.jlc-button--plain {
+    background-color: @white !important;
+    color: @primary-color;
+
+    &.jlc-loading {
+      border-color: @primary-color @primary-color @primary-color transparent;
+    }
+  }
+}
+
+.jlc-button--info {
+  background-color: @info-color;
+  border-color: @info-color;
+  color: @white;
+  &:hover {
+    background: lighten(@info-color, 20%);
+    border-color: lighten(@info-color, 20%);
+  }
+  &:active {
+    background-color: darken(@info-color, 20%);
+    border-color: darken(@info-color, 20%);
+  }
+
+  &.jlc-button--plain {
+    background-color: @white !important;
+    color: @info-color;
+
+    &.jlc-loading {
+      border-color: @info-color @info-color @info-color transparent;
+    }
+  }
+}
+
+.jlc-button--success {
+  background-color: @success-color;
+  border-color: @success-color;
+  color: @white;
+  &:hover {
+    background: lighten(@success-color, 20%);
+    border-color: lighten(@success-color, 20%);
+  }
+  &:active {
+    background-color: darken(@success-color, 20%);
+    border-color: darken(@success-color, 20%);
+  }
+
+  &.jlc-button--plain {
+    background-color: @white !important;
+    color: @success-color;
+
+    &.jlc-loading {
+      border-color: @success-color @success-color @success-color transparent;
+    }
+  }
+}
+
+.jlc-button--warning {
+  background-color: @warning-color;
+  border-color: @warning-color;
+  color: @white;
+  &:hover {
+    background: lighten(@warning-color, 20%);
+    border-color: lighten(@warning-color, 20%);
+  }
+  &:active {
+    background-color: darken(@warning-color, 20%);
+    border-color: darken(@warning-color, 20%);
+  }
+
+  &.jlc-button--plain {
+    background-color: @white !important;
+    color: @warning-color;
+
+    &.jlc-loading {
+      border-color: @warning-color @warning-color @warning-color transparent;
+    }
+  }
+}
+
+.jlc-button--danger {
+  background-color: @danger-color;
+  border-color: @danger-color;
+  color: @white;
+  &:hover {
+    background: lighten(@danger-color, 20%);
+    border-color: lighten(@danger-color, 20%);
+  }
+  &:active {
+    background-color: darken(@danger-color, 20%);
+    border-color: darken(@danger-color, 20%);
+  }
+
+  &.jlc-button--plain {
+    background-color: @white !important;
+    color: @danger-color;
+
+    &.jlc-loading {
+      border-color: @danger-color @danger-color @danger-color transparent;
+    }
+  }
+}
+// 禁用状态
+.jlc-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+// size大小
+.jlc-button--large {
+  font-size: 16px;
+  height: @h-large;
+  padding: 0 16px;
+}
+.jlc-button--small {
+  font-size: 12px;
+  height: @h-small;
+  padding: 0 8px;
+} 
+.jlc-button--mini {
+  font-size: 10px;
+  height: @h-mini;
+  padding: 0 8px;
+}
+@keyframes jlc-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

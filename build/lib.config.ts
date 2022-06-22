@@ -1,12 +1,18 @@
-import baseConfig from './base.config';
 import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
+import libCss from 'vite-plugin-libcss';
 
 export default defineConfig({
-    ...baseConfig,
+    resolve: {
+        alias: {
+            '@': resolve(__dirname, '../src'),
+            packages: resolve(__dirname, '../packages'),
+        },
+    },
     build: {
-        outDir: 'lib',
+        outDir: 'dist',
         lib: {
             entry: resolve(__dirname, '../packages/index.ts'),
             name: 'JLCUI',
@@ -24,7 +30,10 @@ export default defineConfig({
         }
     },
     plugins: [
-        ...(baseConfig as any).plugins,
+        vue({
+            include: [/\.vue$/, /\.md$/],
+        }),
         dts(),
+        libCss()
     ]
 });

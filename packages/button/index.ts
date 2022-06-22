@@ -1,10 +1,10 @@
 import { App, Plugin } from 'vue';
-import MicoButton from './src/index.vue';
+import JlcButton from './src/index.vue';
 
-export const MicoButtonPlugin: Plugin = {
+export const JlcButtonPlugin: Plugin = {
   install(app: App) {
-    app.component('mico-button', MicoButton);
+    app.component('jlc-button', JlcButton);
   },
 };
 
-export { MicoButton };
+export { JlcButton };

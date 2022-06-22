@@ -1,24 +1,33 @@
 <template>
-  <div class="jlc-doc">
-    <aside>
-      <router-link v-for="(link, index) in data.links" :key="index" :to="link.path">{{ link.name }}</router-link>
-    </aside>
-    <main>
-      <router-view></router-view>
-    </main>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script setup>
-import ComponentList from 'packages/list.json';
-import { reactive } from 'vue'
-console.log(ComponentList, 'ComponentList')
-const data = reactive({
-  links: ComponentList.map(item => ({
-    path: `/components/${item.compName}`,
-    name: item.compZhName
-  }))
-})
+import { ref, provide } from "vue";
+import router from "./router";
+
+const clientWidth = ref(null);
+
+clientWidth.value = document.documentElement.clientWidth;
+const asideVisible = ref(clientWidth.value <= 500 ? false : true);
+
+provide("asideVisible", asideVisible);
+provide("clientWidth", clientWidth);
+
+router.afterEach(() => {
+  if (clientWidth.value <= 500) {
+    asideVisible.value = false;
+  }
+});
+
+window.onresize = () => {
+  clientWidth.value = document.body.clientWidth;
+  if (clientWidth.value <= 500) {
+    asideVisible.value = false;
+  } else {
+    asideVisible.value = true;
+  }
+};
 </script>
 
 <style lang="less">

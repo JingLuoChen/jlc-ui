@@ -1,98 +1,28 @@
 <template>
   <div class="jlc-preview">
-    <section>
-      <slot></slot>
-    </section>
-
-    <div v-show="codeVisible" class="source-code">
-      <pre class="language-html"><code class="language-html">{{ previewSourceCode }}</code></pre>
+    <div class="code">
+      <h3>{{ component.__sourceCodeTitle }}</h3>
+      <component :is="component" />
     </div>
-
-    <div class="preview-bottom">
-      <span name="Code" @click="showSourceCode">查看代码</span>
-    </div>
+    <pre class="language-html" v-html="html" />
   </div>
 </template>
+<script setup lang="ts">
+import "prismjs";
+import "prismjs/themes/prism.css";
+import { computed, ref } from "vue";
 
-<script>
-import Prism from 'prismjs';
-import '../assets/prism.css';
-const isDev = import.meta.env.MODE === 'development';
-export default {
-  props: {
-    /** 组件名称 */
-    compName: {
-      type: String,
-      default: '',
-      require: true,
-    },
-    /** 要显示代码的组件 */
-    demoName: {
-      type: String,
-      default: '',
-      require: true,
-    },
-  },
-  data() {
-    return {
-      sourceCode: '',
-      codeVisible: false,
-    };
-  },
-  computed: {
-    previewSourceCode() {
-      return this.sourceCode.replace(/'\.\.\/\.\.\/index'/g, `'@tencent/jlc-ui'`);
-    },
-  },
-  async mounted() {
-    if (this.compName && this.demoName) {
-      if (isDev) {
-        this.sourceCode = (
-          await import(/* @vite-ignore */ `../../packages/${this.compName}/docs/${this.demoName}.vue?raw`)
-        ).default;
-      } else {
-        this.sourceCode = await fetch(`${isDev ? '' : '/JLC-UI'}/packages/${this.compName}/docs/${this.demoName}.vue`).then((res) => res.text());
-      }
-    }
-    await this.$nextTick();
-    Prism.highlightAll();
-  },
-  methods: {
-    async copyCode() {
-      // this.$copyText(this.sourceCode);
-    },
-    showSourceCode() {
-      this.codeVisible = !this.codeVisible;
-    },
-  },
-};
+const Prism = (window as any).Prism;
+const props = defineProps({
+  component: Object,
+});
+
+const html = computed(() => {
+  return Prism.highlight(
+    props.component.__sourceCode,
+    Prism.languages.html,
+    "html"
+  );
+});
+
 </script>
-
-<style lang="less">
-pre {
-  line-height: 0;
-}
-.jlc-preview {
-  border: 4px;
-  border: 1px dashed #e7e7e7;
-  padding: 10px;
-  border-bottom: 1px dashed #e7e7e7;
-  section {
-    margin: 15px;
-  }
-}
-.source-code {
-  max-height: 500px;
-}
-.language-html {
-  margin: 0;
-  padding: 0 15px;
-}
-.preview-bottom {
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px dashed #e7e7e7;
-}
-</style>

@@ -1,24 +1,56 @@
 <template>
-    <div class="mico-button" @click="$emit('click', $event)">
+    <button class="jlc-button" :class="classes">
+        <span v-if="loading" class="jlc-loading"></span>
         <slot></slot>
-    </div>
+    </button>
 </template>
 <script lang="ts" setup>
-defineEmits(['click'])
+import { computed, useSlots } from "vue";
+// 获取传入的配置项
+const props = defineProps({
+    type: {
+        type: String,
+        default: "default",
+    },
+    plain: {
+        type: Boolean,
+        default: false,
+    },
+    size: {
+        type: String,
+        default: "normal",
+    },
+    round: {
+        type: Boolean,
+        default: false,
+    },
+    circle: {
+        type: Boolean,
+        default: false,
+    },
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
+    loading: {
+        type: Boolean,
+        default: false,
+    }
+});
+const { type, plain, size, round, disabled, circle } = props;
+const classes = computed(() => {
+    return {
+        [`jlc-button--${type}`]: type,
+        [`jlc-button--plain`]: plain,
+        [`jlc-button--${size}`]: size,
+        [`jlc-button--round`]: round,
+        [`is-circle`]: circle,
+        [`jlc-button--disabled`]: disabled,
+    }
+})
+
+
 </script>
 <style scoped lang="less">
-.mico-button {
-    appearance: none;
-    padding: 5px 10px;
-    background: lightskyblue;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    &:active {
-        background: rgb(92, 185, 243);
-    }
-    &:not(:last-child) {
-        margin-right: 15px;
-    }
-}
+@import './index.less';
 </style>

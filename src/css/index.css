@@ -1,0 +1,27 @@
+.jlc-doc-wrapper h1, .jlc-doc-wrapper h2, .jlc-doc-wrapper h3, .jlc-doc-wrapper h4, .jlc-doc-wrapper h5, .jlc-doc-wrapper h6 {
+  color: #323233;
+  font-weight: normal;
+  line-height: 1.5;
+}
+.card {
+  margin-bottom: 24px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 12px #ebedf0;
+  
+}
+.jlc-doc-wrapper h1 {
+  margin-top: 0;
+  margin: 0 0 30px;
+  font-size: 30px;
+  cursor: default;
+}
+.jlc-doc-wrapper h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+
