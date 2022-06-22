@@ -1,7 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import vitePluginVue from "../plugins/vue-view-code-plugins";
 const mdPlugin = require("vite-plugin-markdown");
 
 export default defineConfig({
@@ -15,7 +14,6 @@ export default defineConfig({
         vue(),
         mdPlugin.plugin({
             mode: ["html", "vue"],
-        }),
-        vitePluginVue,
+        })
     ],
 });
