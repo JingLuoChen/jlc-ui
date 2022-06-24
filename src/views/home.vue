@@ -6,7 +6,7 @@
       <p>轻量、可靠的移动端Vue组件库</p>
       <div class="actions">
         <jlc-button @click="linkTo('github')">GitHub</jlc-button>
-        <jlc-button @click="linkTo('getStart')" theme="primary">快速使用</jlc-button>
+        <jlc-button type="info" @click="linkTo('getStart')" theme="primary">快速使用</jlc-button>
       </div>
     </div>
   </div>

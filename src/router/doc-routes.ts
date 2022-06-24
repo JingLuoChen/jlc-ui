@@ -11,6 +11,7 @@ const GetStartedDoc = md(GetStarted);
 const InstallDoc = md(Install);
 
 import ButtonDoc from "../views/doc/button/index.vue";
+import TextEllipsisDoc from "../views/doc/text-ellipsis/index.vue";
 
 const docMenus: any = {
   文档: [
@@ -20,6 +21,7 @@ const docMenus: any = {
   ],
   通用组件: [
     { path: "button", component: ButtonDoc, name: "Button 按钮" },
+    { path: "text-ellipsis", component: TextEllipsisDoc, name: "Text Ellipsis 文本省略" },
   ]
 };
 

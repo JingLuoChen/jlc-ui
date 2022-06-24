@@ -1,5 +1,5 @@
 <template>
-  <div class="topnav">
+  <div class="nav">
     <div class="menu">
       <router-link exact to="/home">首页</router-link>
       <router-link to="/doc">文档</router-link>
@@ -32,7 +32,7 @@ const getHome = () => {
 };
 </script>
 <style lang="scss">
-.topnav {
+.nav {
   height: 63px;
   background-color: #fff;
   display: flex;
@@ -43,7 +43,7 @@ const getHome = () => {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 0;
+  z-index: 99;
 
   .menu {
     margin-right: 30px;
@@ -61,7 +61,7 @@ const getHome = () => {
     }
 
     .router-link-active {
-      color: rgb(24, 160, 88);
+      color: #1989fa;
       border-bottom: 1px solid;
     }
 

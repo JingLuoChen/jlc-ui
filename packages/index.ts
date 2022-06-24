@@ -1,16 +1,19 @@
-import { App, Plugin } from 'vue'
+import { App, Plugin } from 'vue';
 
 import { JlcButtonPlugin } from './button';
+import { JlcTextEllipsisPlugin } from './text-ellipsis';
 
 const JLCUIPlugin: Plugin = {
   install(app: App) {
     JlcButtonPlugin.install?.(app);
+    JlcTextEllipsisPlugin.install?.(app)
   },
 };
 
 export default JLCUIPlugin;
 
-export * from './button'
+export * from './button';
+export * from './text-ellipsis';
 // // 所有组件列表
 // const components = [ MicoButton, MicoPageLoading ]
 
