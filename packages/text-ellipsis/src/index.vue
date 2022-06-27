@@ -19,7 +19,7 @@ const classes = computed(() => ({
   ["jlc-text-ellipsis-expand-trigger"]: expandTrigger,
 }));
 
-let styles = reactive({});
+let styles = reactive({} as any);
 const isExpand = ref(false);
 styles["-webkit-line-clamp"] = lineClamp;
 
