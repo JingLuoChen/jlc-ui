@@ -1,6 +1,6 @@
 {
   "name": "jlc-ui",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "main": "./dist/jlc-ui.umd.js",
   "module": "./dist/jlc-ui.es.js",
   "exports": {
